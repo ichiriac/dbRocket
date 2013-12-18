@@ -1,0 +1,14 @@
+{
+    "router": {
+        "class": "rocket\\core\\Router"
+    },
+    "session": {
+        "class": "rocket\\core\\Session"
+    },
+    "db": {
+        "class": "rocket\\core\\Database"
+    },
+    "view": {
+        "class": "rocket\\core\\View"
+    }
+}
