@@ -22,22 +22,6 @@ class rocket {
     private $services = array();
     private $config = array();
     /**
-     * Routes :
-     * - admin / action
-     * - table / action / id 
-     */
-    public function route($uri) {
-        $uri = trim(array_unshift(explode('?', $uri, 2)), '/');
-        if (empty($uri)) $uri = 'admin/index';
-        $parts = explode('/', $uri, 3);
-        if ($parts[0] === 'admin') {
-            return array(
-                'rocket\\controllers\\admin',
-                $parts[1]
-            );
-        }
-    }
-    /**
      * Gets an service instance
      * @see config/services.php
      */
@@ -108,3 +92,17 @@ class rocket {
         }
     }
 }
+
+/**
+ * Basic service definition (rocket engine)
+ */ 
+class Engine {
+    public $app;
+    public $options;
+    public function __construct(Rocket $app, array $options = null) {
+        $this->app = $app;
+        $this->options = $options;
+    }
+}
+// set also visible into core namespace (without using)
+class_alias('Engine', 'rocket\\core\\Engine');
