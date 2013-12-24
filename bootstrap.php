@@ -27,8 +27,9 @@ class rocket {
      * - table / action / id 
      */
     public function route($uri) {
+        $uri = trim(array_unshift(explode('?', $uri, 2)), '/');
         if (empty($uri)) $uri = 'admin/index';
-        $parts = explode('/', trim($uri, '/'), 3)
+        $parts = explode('/', $uri, 3);
         if ($parts[0] === 'admin') {
             return array(
                 'rocket\\controllers\\admin',
