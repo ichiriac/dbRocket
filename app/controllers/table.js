@@ -9,7 +9,8 @@ module.exports = {
     path: '/table/:name',
     get: function(req, res) {
       res.render('table/list', {
-        table: req.params.name
+        table: req.params.name,
+        title: 'Listing ' + req.params.name
       });
     }
   }

@@ -52,7 +52,8 @@ module.exports = function(app) {
 
         //Error page
         res.status(500).render('500', {
-            error: err.stack
+            error: err.stack,
+            title: 'Error 500 - Internal Server Error'
         });
     });
 
@@ -60,6 +61,7 @@ module.exports = function(app) {
     app.use(function(req, res, next) {
         res.status(404).render('404', {
             url: req.originalUrl,
+            title: 'Error 404 - Document not found',
             error: 'Not found'
         });
     });

@@ -33,15 +33,13 @@ var express     = require('express');
 var env             = process.env.NODE_ENV = process.env.NODE_ENV || 'developpement';
 console.log('... boostrap mode [' + env + ']');
 
-function config() { return require('./config/config'); }
 function auth() { return require('./core/auth'); }
-function db() { return require('./core/database'); }
 
 // create the app instance
 console.log('... starting express app');
 var app = express();
-app.config = config();
-app.db = db();
+app.config = require('./config/config');
+app.db = require('./core/database')(app);
 
 // Initialize Express
 require('./core/express')(app);
