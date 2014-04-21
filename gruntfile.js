@@ -20,8 +20,8 @@ module.exports = function(grunt) {
                 },
             },
             css: {
-                files: ['./public/assets/css/**'],
-                tasks: ['less:all', 'concat:css'],
+                files: ['./public/assets/**/*.css'],
+                tasks: ['concat_css'],
                 options: {
                     livereload: true
                 }
@@ -40,7 +40,7 @@ module.exports = function(grunt) {
                 },
                 files: {
                   './public/bootstrap.css': './public/components/bootstrap/less/bootstrap.less',
-                  './public/app.css': './public/assets/css/app.css'
+                  './public/app.css': './public/assets/**/*.less'
                 }
             }
         },
@@ -60,14 +60,17 @@ module.exports = function(grunt) {
                     './public/assets/js/*.js'
                 ],
                 dest: './public/front.js'
-            },
-            css: {
-                src: [
-                    './public/bootstrap.css',
-                    './public/app.css'
-                ],
-                dest: './public/front.css'
             }
+        },
+        concat_css: {
+          files: {
+            './public/style.css': './public/assets/**/*.css',
+            './public/front.css': [
+              './public/bootstrap.css',
+              './public/app.css',
+              './public/style.css'
+            ]
+          }
         },
         uglify: {
             options: {
@@ -105,6 +108,7 @@ module.exports = function(grunt) {
     // Load NPM tasks
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-concat-css');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -120,10 +124,10 @@ module.exports = function(grunt) {
 
     // Install tasks
     grunt.registerTask(
-        'install:developpement', ['jshint','concat:front', 'less:all', 'concat:css']
+        'install:developpement', ['jshint','concat:front', 'less:all', 'concat_css']
     );
     grunt.registerTask(
-        'install:production', ['concat:front', 'less:all', 'concat:css','uglify:front']
+        'install:production', ['concat:front', 'less:all', 'concat_css','uglify:front']
     );
 
 };

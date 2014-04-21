@@ -7,6 +7,19 @@ module.exports = function(app) {
 
     //routes should be at the last
     var router = express.Router();
+    router.param(function(name, fn){
+      if (fn instanceof RegExp) {
+        return function(req, res, next, val){
+          var captures;
+          if (captures = fn.exec(String(val))) {
+            req.params[name] = captures;
+            next();
+          } else {
+            next('route');
+          }
+        };
+      }
+    });
     var path = app.config.root + '/app/controllers';
     var files = fs.readdirSync(path);
     for(var i in files) {
@@ -16,7 +29,7 @@ module.exports = function(app) {
             if (action.hasOwnProperty('path')) {
                 if (action.hasOwnProperty('params')) {
                     for(var i in action.params) {
-                        router.param(i, action.params[i]);
+                      router.param(i, action.params[i]);
                     }
                 }
                 var route = router.route(action.path);

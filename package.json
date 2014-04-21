@@ -41,11 +41,10 @@
     "bower": "latest",
     "grunt": "latest",
     "grunt-cli": "latest",
-    "grunt-env": "latest"
-  },
-  "devDependencies": {
+    "grunt-env": "latest",
     "grunt-contrib-watch": "latest",
     "grunt-contrib-concat": "latest",
+    "grunt-concat-css": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-less": "latest",
     "grunt-contrib-jshint": "latest",
