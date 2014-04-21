@@ -1,0 +1,42 @@
+{
+  "name": "dbRocket",
+  "version": "0.0.0",
+  "description": "Database Driven Developpement - an MSAccess like CRUD generator",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ichiriac/dbRocket.git"
+  },
+  "keywords": [
+    "database",
+    "rad",
+    "crud",
+    "ddd",
+    "msaccess",
+    "like"
+  ],
+  "author": "Ioan CHIRIAC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ichiriac/dbRocket/issues"
+  },
+  "homepage": "https://github.com/ichiriac/dbRocket",
+  "dependencies": {
+    "express": "^4.0.0",
+    "swig": "^1.3.2",
+    "sequelize": "^1.7.2",
+    "mysql": "^2.1.1",
+    "lodash": "^2.4.1",
+    "connect-flash": "^0.1.1",
+    "view-helpers": "^0.1.4",
+    "compression": "^1.0.1",
+    "cookie-parser": "^1.0.1",
+    "body-parser": "^1.0.2",
+    "method-override": "^1.0.0",
+    "express-session": "^1.0.3",
+    "bower": "^1.3.2"
+  }
+}
