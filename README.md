@@ -3,7 +3,7 @@ dbRocket
 
 Database Driven Developpement - an MSAccess like CRUD generator
 
-== Structure ==
+## Structure
 
 Based on Mean Stack structure with some changes :
 
@@ -12,7 +12,7 @@ Based on Mean Stack structure with some changes :
 - Dynamic routing support
 - Express MVC engine
 
-== Features ==
+## Features
 
 - Analyse the database structure and generate model entities
 - Bootstrap powered views & components
@@ -21,12 +21,18 @@ Based on Mean Stack structure with some changes :
 - Deployment & upgrade helpers
 - Plugins manager
 
-== Notes ==
+## Install
 
 In order to install bower packages on windows use this before : `git config --global url."https://".insteadOf git://`
 
+```
+git clone https://github.com/ichiriac/dbRocket
+cd dbRocket
+npm install
+grunt
+```
 
-== License ==
+## License
 
 The MIT License (MIT)
 

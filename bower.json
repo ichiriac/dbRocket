@@ -1,7 +1,6 @@
 {
   "name": "dbRocket",
   "version": "0.1.0",
-  "directory": "public/components",
   "dependencies": {
     "angular": "latest",
     "angular-resource": "latest",
