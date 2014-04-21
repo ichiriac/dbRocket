@@ -35,7 +35,7 @@ console.log('... boostrap mode [' + env + ']');
 
 function config() { return require('./config/config'); }
 function auth() { return require('./core/auth'); }
-function db() { return require('./core/db'); }
+function db() { return require('./core/database'); }
 
 // create the app instance
 console.log('... starting express app');

@@ -26,6 +26,8 @@ Based on Mean Stack structure with some changes :
 In order to install bower packages on windows use this before : `git config --global url."https://".insteadOf git://`
 
 ```
+npm install -g grunt-cli
+npm install -g bower
 git clone https://github.com/ichiriac/dbRocket
 cd dbRocket
 npm install
