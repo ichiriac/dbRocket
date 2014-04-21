@@ -39,8 +39,7 @@ module.exports = function(grunt) {
                   ]
                 },
                 files: {
-                  './public/bootstrap.css': './public/components/bootstrap/less/bootstrap.less',
-                  './public/app.css': './public/assets/**/*.less'
+                  './public/bootstrap.css': './public/components/bootstrap/less/bootstrap.less'
                 }
             }
         },
@@ -63,13 +62,12 @@ module.exports = function(grunt) {
             }
         },
         concat_css: {
-          files: {
-            './public/style.css': './public/assets/**/*.css',
-            './public/front.css': [
-              './public/bootstrap.css',
-              './public/app.css',
-              './public/style.css'
-            ]
+          all: {
+              src: [
+                './public/bootstrap.css',
+                './public/assets/**/*.css'
+              ],
+              dest: './public/front.css'
           }
         },
         uglify: {
