@@ -7,6 +7,6 @@ module.exports = {
         username: "root"
     },
     app: {
-        name: "dbRocket - Development"
+        name: "dbRocket ** Development MODE **"
     }
 };

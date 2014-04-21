@@ -5,21 +5,23 @@ Database Driven Developpement - an MSAccess like CRUD generator
 
 ## Structure
 
-Based on Mean Stack structure with some changes :
+Based on NodeJS stack :
 
-- Swig templating engine
-- Squelize ORM
-- Dynamic routing support
 - Express MVC engine
+- Swig templating engine
+- Sequelize ORM (with mysql by default))
+- Bower components with Angular & Bootstrap
+- Grunt toolbox (watch, jshint, watch, uglify, nodemon...)
 
 ## Features
 
 - Analyse the database structure and generate model entities
 - Bootstrap powered views & components
 - Forms based on configuration files
-- In-app coding
+- In-app coding & configuration
 - Deployment & upgrade helpers
 - Plugins manager
+- Dynamic routing support
 
 ## Install
 
@@ -31,6 +33,8 @@ npm install -g bower
 git clone https://github.com/ichiriac/dbRocket
 cd dbRocket
 npm install
+bower install
+grunt install:developpement
 grunt
 ```
 

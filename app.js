@@ -30,7 +30,7 @@ console.log('\n                     3..2..1.. Launching !\n');
 var express     = require('express');
 
 // Load Configurations
-var env             = process.env.NODE_ENV = process.env.NODE_ENV || 'dev';
+var env             = process.env.NODE_ENV = process.env.NODE_ENV || 'developpement';
 console.log('... boostrap mode [' + env + ']');
 
 function config() { return require('./config/config'); }

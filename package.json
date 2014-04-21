@@ -45,6 +45,9 @@
   },
   "devDependencies": {
     "grunt-contrib-watch": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-less": "latest",
     "grunt-contrib-jshint": "latest",
     "grunt-nodemon": "latest",
     "grunt-concurrent": "latest"

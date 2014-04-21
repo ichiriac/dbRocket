@@ -3,37 +3,84 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         watch: {
-            jade: {
-                files: ['app/views/**'],
-                options: {
-                    livereload: true,
-                },
-            },
             js: {
-                files: ['public/assets/js/**', 'app/**/*.js'],
-                tasks: ['jshint'],
+                files: [
+                    './public/assets/js/*.js',
+                    './components/**/*.js'
+                ],
+                tasks: ['concat:front'],
                 options: {
-                    livereload: true,
-                },
+                    livereload: true
+                }
             },
             html: {
-                files: ['public/views/**'],
+                files: ['./public/views/**'],
                 options: {
                     livereload: true,
                 },
             },
             css: {
-                files: ['public/assets/css/**'],
+                files: ['./public/assets/css/**'],
+                tasks: ['less:all', 'concat:css'],
                 options: {
                     livereload: true
                 }
             }
         },
         jshint: {
-            all: ['gruntfile.js', 'public/assets/js/**/*.js', 'app/**/*.js']
+            all: ['gruntfile.js', './public/assets/js/*.js', './app/**/*.js']
+        },
+        less: {
+            all: {
+                options: {
+                  paths: [
+                    './public/assets/css/',
+                    './public/components/bootstrap/less/'
+                  ]
+                },
+                files: {
+                  './public/bootstrap.css': './public/components/bootstrap/less/bootstrap.less',
+                  './public/app.css': './public/assets/css/app.css'
+                }
+            }
+        },
+        concat: {
+            options: {
+                separator: ';',
+            },
+            front: {
+                src: [
+                    './public/components/jquery/dist/jquery.js',
+                    './public/components/bootstrap/dist/js/bootstrap.js',
+                    './public/components/angular/angular.js',
+                    './public/components/angular-bootstrap/ui-bootstrap.js',
+                    './public/components/angular-cookies/angular-cookies.js',
+                    './public/components/angular-resource/angular-resource.js',
+                    './public/components/angular-ui-utils/ui-utils.js',
+                    './public/assets/js/*.js'
+                ],
+                dest: './public/front.js'
+            },
+            css: {
+                src: [
+                    './public/bootstrap.css',
+                    './public/app.css'
+                ],
+                dest: './public/front.css'
+            }
+        },
+        uglify: {
+            options: {
+                mangle: false  // Use if you want the names of your functions and variables unchanged
+            },
+            front: {
+                files: {
+                    './public/front.js': './public/front.js'
+                }
+            }
         },
         nodemon: {
-            dev: {
+            developpement: {
                 script: 'app.js',
                 options: {
                     ignore: ['README.md', 'node_modules/**', '.DS_Store'],
@@ -55,17 +102,28 @@ module.exports = function(grunt) {
         }
     });
 
-    //Load NPM tasks 
+    // Load NPM tasks
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-contrib-concat');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-nodemon');
     grunt.loadNpmTasks('grunt-concurrent');
     grunt.loadNpmTasks('grunt-env');
 
-    //Making grunt default to force in order not to break the project.
+    // Making grunt default to force in order not to break the project.
     grunt.option('force', true);
 
-    //Default task(s).
-    grunt.registerTask('default', ['jshint', 'concurrent']);
+    // Default task(s).
+    grunt.registerTask('default', ['concurrent']);
+
+    // Install tasks
+    grunt.registerTask(
+        'install:developpement', ['jshint','concat:front', 'less:all', 'concat:css']
+    );
+    grunt.registerTask(
+        'install:production', ['concat:front', 'less:all', 'concat:css','uglify:front']
+    );
 
 };
