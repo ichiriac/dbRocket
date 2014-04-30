@@ -38,12 +38,15 @@ module.exports = function(app) {
     app.use(require('cookie-parser')());
 
     // request body parsing middleware should be above methodOverride
-    app.use(require('body-parser')());
-    app.use(require('method-override')());
+    app.use(require('body-parser').urlencoded());
 
-    //express/mongo session storage
+    // session manager
     app.use(require('express-session')({
         secret: '$uper$ecret$e$$ionKey'
+        ,key: 'sid'
+        ,cookie: {
+          httpOnly: true
+        }
     }));
 
     //connect flash for flash messages

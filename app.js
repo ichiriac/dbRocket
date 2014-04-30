@@ -44,6 +44,9 @@ app.db = require('./core/database')(app);
 // Initialize Express
 require('./core/express')(app);
 
+// Initialize Auth Manager
+app.auth = require('./core/auth')(app);
+
 // Initialize Routes
 require('./core/routes')(app);
 
