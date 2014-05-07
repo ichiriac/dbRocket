@@ -13,5 +13,11 @@ module.exports = {
         title: 'Listing ' + req.params.name
       });
     }
+  },
+  designer: {
+    path: '/designer',
+    get: function(req, req) {
+      res.render('designer/index');
+    }
   }
 };

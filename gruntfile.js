@@ -56,6 +56,7 @@ module.exports = function(grunt) {
                     './public/components/angular-cookies/angular-cookies.js',
                     './public/components/angular-resource/angular-resource.js',
                     './public/components/angular-ui-utils/ui-utils.js',
+                    './public/components/jsPlumb/dist/js/jquery.jsPlumb-1.6.0.js',
                     './public/assets/js/*.js'
                 ],
                 dest: './public/front.js'
@@ -65,6 +66,7 @@ module.exports = function(grunt) {
           all: {
               src: [
                 './public/bootstrap.css',
+                './public/components/jsPlumb/css/jsplumb.css',
                 './public/assets/**/*.css'
               ],
               dest: './public/front.css'
@@ -72,7 +74,7 @@ module.exports = function(grunt) {
         },
         uglify: {
             options: {
-                mangle: false  // Use if you want the names of your functions and variables unchanged
+                mangle: true  // Use if you want the names of your functions and variables unchanged
             },
             front: {
                 files: {
